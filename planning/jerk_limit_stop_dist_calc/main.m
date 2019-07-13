@@ -2,17 +2,17 @@ set(0, 'defaultAxesFontSize', 12);
 set(0, 'defaultTextFontSize', 20);
 set(0, 'DefaultAxesLineWidth', 1.0, 'DefaultLineLineWidth', 1.5);
 
-% a_arr = 1:-1:-2;
-a_arr = 0;
+a_arr = 1:-1:-1;
+% a_arr = 0;
 for a0 = a_arr
 
 %% parameter definition
 % jerk constraint
-s = 0.3;
+s = 1.5;
 
 % initial condition
 kmph2mps = 1 / 3.6;
-v0 = 60.0 * kmph2mps; % [m/s]
+v0 = 10.0 * kmph2mps; % [m/s]
 % a0 = -2.0; % [m/s2]
 
 %% calculate trajectory parameters
@@ -59,14 +59,15 @@ tmp2 = strcat("result : T = ", num2str(T), "[s], x(T) = ", num2str(xt(end)), "[m
 % title_string = strcat(tmp1, " \n ", tmp2);
 title_string = [tmp1, tmp2];
 
-figure;
-subplot(4,1,1); plot(tarr, xt); legend('x [m]'); ylabel('x [m]'); grid on; 
-title(title_string);
-subplot(4,1,2); plot(tarr, vt); legend('v [m/s]'); ylabel('v [m/s]'); grid on;
-subplot(4,1,3); plot(tarr, at); legend('a [m/s2]'); ylabel('a [m/s2]'); grid on;
-subplot(4,1,4); plot(tarr, st); legend('s [m/s3]'); ylabel('s [m/s3]'); grid on;
-xlabel('t [s]');
+% figure;
+% subplot(4,1,1); plot(tarr, xt); legend('x [m]'); ylabel('x [m]'); grid on; 
+% title(title_string);
+% subplot(4,1,2); plot(tarr, vt); legend('v [m/s]'); ylabel('v [m/s]'); grid on;
+% subplot(4,1,3); plot(tarr, at); legend('a [m/s2]'); ylabel('a [m/s2]'); grid on;
+% subplot(4,1,4); plot(tarr, st); legend('s [m/s3]'); ylabel('s [m/s3]'); grid on;
+% xlabel('t [s]');
 
+    fprintf('v0 = %3.3f [km/h], a0 = %3.3f [m/ss], T = %3.3f [s],  x(T) = %3.3f [m]\n', v0 / kmph2mps, a0, T, xt(end));
 
 
 

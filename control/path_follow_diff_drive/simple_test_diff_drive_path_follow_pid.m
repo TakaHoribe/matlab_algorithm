@@ -51,7 +51,9 @@ gain_yaw = param(4);
 lat_err = x(1);
 yaw_err = x(2);
 
-w = -gain_lat * lat_err - gain_yaw * yaw_err;
+% feedback control calculation
+w = - sign(v) * gain_lat * lat_err - gain_yaw * yaw_err;
+
 
 dy = v * sin(yaw_err) + L * cos(yaw_err) * w;
 dyaw = w;
